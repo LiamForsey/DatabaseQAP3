@@ -1,0 +1,50 @@
+Part 2 Text Queries:
+
+insert the sample book data::
+
+
+1
+db.books.insertMany([
+  {
+    title: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    genre: "Fantasy",
+    publishedYear: 1937,
+  },
+
+2
+  {
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    genre: "Fiction",
+    publishedYear: 1960,
+  },
+
+3
+  {
+    title: "1984",
+    author: "George Orwell",
+    genre: "Dystopian",
+    publishedYear: 1949,
+  },
+
+]);
+
+Get the titles of the books::
+
+
+db.books.find({}, { title: 1, _id: 0 });
+
+Find all books written by Tolkein::
+
+db.books.find({ author: "J.R.R. Tolkien" });
+
+
+Update genre of "1984" to Science Fiction::
+
+
+db.books.updateOne({ title: "1984" }, { $set: { genre: "Science Fiction" } });
+
+Delete The Hobbitt Book::
+
+db.books.deleteOne({ title: "The Hobbit" });
